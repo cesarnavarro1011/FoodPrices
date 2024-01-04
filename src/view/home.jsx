@@ -3,7 +3,9 @@ import React from 'react'
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import Card from '../components/card';
 
-export default function Home() {
+
+export default function Home({ navigation }) {
+  const cards = [1,2,4,5,6,7,8,9,10,11,12,13,14];
   return (
     <SafeAreaView>
       <VStack space={2} justifyContent="center">
@@ -35,15 +37,16 @@ export default function Home() {
         </HStack>
       </VStack>
       <ScrollView pt={1} mb={110} >
-        <Stack height="auto" overflow="hidden" flexWrap="wrap" flexDirection="row" >
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-        </Stack>
+        <Stack height="auto" overflow="hidden" flexWrap="wrap" flexDirection="row" >{
+          cards.map((cardCount) => (
+            <Card 
+              key = {cardCount}
+              onPress={() => {
+                navigation.navigate('CardDetails')
+              }}  
+            />
+          ))}
+          </Stack>
       </ScrollView>
     </SafeAreaView>
   )

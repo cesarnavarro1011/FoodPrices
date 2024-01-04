@@ -1,27 +1,48 @@
 import React from "react";
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 import { AntDesign, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-import Home from './view/home';
+import Home from './src/view/home';
 import { NativeBaseProvider } from "native-base";
-import Maps from "./view/maps";
-import Setting from "./view/setting";
+import Maps from "./src/view/maps";
+import Setting from "./src/view/setting";
+import CardDetails from "./src/view/cardDetails";
 
 const  headerShown = () => ({
   headerShown: false
 })
+
+const StackHome = createNativeStackNavigator();
+function MyStack() {
+  return (
+    <StackHome.Navigator>
+      <StackHome.Screen 
+        name="Home" 
+        component={Home}  
+        options={headerShown}
+      />
+      <StackHome.Screen 
+        name="CardDetails" 
+        component={CardDetails}  
+        options={headerShown}
+      />
+    </StackHome.Navigator>
+  );
+}
+
 
 const TabHome = createBottomTabNavigator();
 function MyTabs() {
   return (
     <TabHome.Navigator>
       <TabHome.Screen 
-        name="Home" 
-        component={Home}
+        name="MyStack" 
+        component={MyStack}
         options = {{ 
           tabBarLabel: "Home",
           headerShown: false,
@@ -59,30 +80,8 @@ function MyTabs() {
   );
 }
 
-const StackHome = createNativeStackNavigator();
-function MyStack() {
-  return (
-    <StackHome.Navigator>
-      {/* <StackHome.Screen 
-        name="FoodDetails" 
-        component={FoodDetails}  
-        options={headerShown}
-      />
-      <StackHome.Screen 
-        name="Maps" 
-        component={Maps} 
-        options={headerShown}
-      />
-      <StackHome.Screen 
-        name="Settings" 
-        component={Settings} 
-        options={headerShown}
-      /> */}
-    </StackHome.Navigator>
-  );
-}
 
-const StackApp = createNativeStackNavigator();
+const StackApp = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>

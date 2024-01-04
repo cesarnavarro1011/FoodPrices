@@ -1,8 +1,12 @@
-import { AspectRatio, Box, Center, Container, Flex, HStack, Heading, Image, Stack, Text } from "native-base";
-import { StyleSheet, View } from "react-native";
+import { AspectRatio, Badge, Box, Center, Container, Flex, HStack, Heading, Image, Stack, Text, VStack } from "native-base";
+import { StyleSheet, Touchable, TouchableOpacity, View } from "react-native";
+import Ratings from "./ratings";
 
-export default function Card() {
+export default function Card(props) {
+  const { onPress, title, description } = props 
+  
   return (
+    <TouchableOpacity onPress = { onPress }>
     <Container maxWidth={80} width={{ base: 178, lg: 250 }} m={1} rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
       borderColor: "coolGray.600",
       backgroundColor: "gray.700"
@@ -28,7 +32,7 @@ export default function Card() {
         PHOTOS
       </Center>
     </Box>
-    <Stack p="4" space={1}>
+    <Stack p="3" space={1}>
       <Stack space={2}>
         <Heading size="sm" ml="-1">
           The Garden City
@@ -41,20 +45,29 @@ export default function Card() {
           Comida tipica de la costa
         </Text>
       </Stack>
-      <Text fontWeight="400" fontSize="md">
-        precio
-      </Text>
+      <Ratings 
+        isDisable = "flase"
+        size={15} 
+        b={6} 
+        ml={-1} 
+        mt={0}
+      />
       <HStack alignItems="center" space={4} justifyContent="space-between">
-        <HStack alignItems="center">
+        <Badge variant="solid" bg="emerald.500" alignSelf="left" w={65} h={8} my={0} 
+          _text={{ fontSize: 11, fontWeight: "bold" }}>
+          19.000
+        </Badge>
+        <HStack alignItems="center" space={4} justifyContent="space-between">
           <Text color="coolGray.600" fontSize="xs" _dark={{
-          color: "warmGray.200"
-        }} fontWeight="400">
+            color: "warmGray.200" }} fontWeight="400"
+          >
             6 mins ago
           </Text>
         </HStack>
       </HStack>
     </Stack>
   </Container>
+  </TouchableOpacity>
   )
 }
 
