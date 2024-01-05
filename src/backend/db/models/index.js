@@ -1,9 +1,9 @@
-const { AllPublications, AllPublicationsSchema } = require('./AllPublications.model');
-const { CommentsUsers, CommentsUsersSchema } = require('./CommentsUsers.model');
-const { PostCreate, PostCreateSchema } = require('./PostCreate.model');
-const { Publications, PublicationsSchema } = require('./Publications.model');
-const { Users, UsersSchema } = require('./Users.model');
-const { UsersVerified, UsersVerifiedSchema } = require('./UsersVerified.model');
+const { AllPublications, AllPublicationsSchema } = require('./allPublications.model');
+const { CommentsUsers, CommentsUsersSchema } = require('./commentsUsers.model');
+const { PostCreate, PostCreateSchema } = require('./postCreate.model');
+const { Publications, PublicationsSchema } = require('./publications.model');
+const { Users, UsersSchema } = require('./users.model');
+const { UsersVerified, UsersVerifiedSchema } = require('./usersVerified.model');
 
 
 function setupModels(sequelize) {

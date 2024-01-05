@@ -18,6 +18,7 @@ app.use(express.json());
 app.get('/', (req,res) => {
     res.send('Backend con NodeJS - Express + CRUD API REST + MySQL');
 });
+// await sequelize.sync({ alter : true})
 
 routerApi(app);
 

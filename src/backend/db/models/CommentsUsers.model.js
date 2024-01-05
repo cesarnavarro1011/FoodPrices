@@ -7,7 +7,7 @@ class CommentsUsers extends Model {
         return {
             sequelize,
             tableName: PERSON_TABLE,
-            modelName: 'comments-users',
+            modelName: 'CommentsUsers',
             timestamps: false
         }
     }

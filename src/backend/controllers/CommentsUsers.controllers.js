@@ -1,9 +1,8 @@
-const CommentsUsersService = require('../services/CommentsUsers.service');
+const CommentsUsersService = require('../services/commentsUsers.service');
 const service = new CommentsUsersService();
 
 const create = async ( req, res ) => {
     try { 
-        await sequelize.sync({ alter : true})
         const response = await service.create(req.body);
         res.json({ success: true, data: response});
     } catch (error) {

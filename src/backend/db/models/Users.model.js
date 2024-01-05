@@ -1,4 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const { CommentsUsers } = require('./commentsUsers.model');
+const { PostCreate } = require('./postCreate.model');
+const { UsersVerified } = require('./usersVerified.model');
 
 const PERSON_TABLE = 'users';
 
@@ -7,7 +10,7 @@ class Users extends Model {
         return {
             sequelize,
             tableName: PERSON_TABLE,
-            modelName: 'users',
+            modelName: 'Users',
             timestamps: false
         }
     }
@@ -42,12 +45,24 @@ const UsersSchema = {
       type: DataTypes.DATE,
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.REAL(11, 12),
     },
   };
 
-// UsersVerified.hasMany(Users, {
-//   foreinkey: "projectId",
+// Users.hasOne(UsersVerified, {
+//   foreinkey: "fk_users",
+//   sourceKey: "id",
+// });
+
+// Users.UsersVerified = Users.hasOne(UsersVerified);
+
+// Users.hasMany(CommentsUsers, {
+//   foreinkey: "fk_users",
+//   sourceKey: "id",
+// });
+
+// Users.hasMany(PostCreate, {
+//   foreinkey: "fk_users",
 //   sourceKey: "id",
 // });
 // Task.belongsTo(Project, { foreinkey: "projectId", targetId: "id" });

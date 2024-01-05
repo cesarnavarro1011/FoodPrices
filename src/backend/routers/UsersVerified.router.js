@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router(); 
-const UsersVerified = require('../controllers/UsersVerified.controllers');
+const usersVerifiedController = require('../controllers/usersVerified.controllers');
 
 router
-    .get('/', UsersVerified.get )
-    .get('/:id', UsersVerified.getById )
-    .post('/', UsersVerified.create )
-    .put('/:id', UsersVerified.update )
-    .delete('/:id', UsersVerified._delete );
+    .get('/', usersVerifiedController.get )
+    .get('/:id', usersVerifiedController.getById )
+    .post('/', usersVerifiedController.create )
+    .put('/:id', usersVerifiedController.update )
+    .delete('/:id', usersVerifiedController._delete );
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const { AllPublications } = require('./allPublications.model');
 
 const PERSON_TABLE = 'post_create';
 
@@ -7,7 +8,7 @@ class PostCreate extends Model {
         return {
             sequelize,
             tableName: PERSON_TABLE,
-            modelName: 'post-create',
+            modelName: 'PostCreate',
             timestamps: false
         }
     }
@@ -40,8 +41,8 @@ const PostCreateSchema = {
   };
 
 
-// Project.hasMany(Task, {
-//   foreinkey: "projectId",
+// PostCreate.hasMany(AllPublications, {
+//   foreinkey: "fk_postCreate",
 //   sourceKey: "id",
 // });
 // Task.belongsTo(Project, { foreinkey: "projectId", targetId: "id" });

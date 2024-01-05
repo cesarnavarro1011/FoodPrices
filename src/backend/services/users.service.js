@@ -5,8 +5,8 @@ class UsersService {
     constructor() {}
 
     async find() {
+
       const res = await models.Users.findAll();
-      console.log(res);
       return res; 
     }
 

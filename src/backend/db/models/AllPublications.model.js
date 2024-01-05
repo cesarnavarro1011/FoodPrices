@@ -7,7 +7,7 @@ class AllPublications extends Model {
         return {
             sequelize,
             tableName: PERSON_TABLE,
-            modelName: 'all-publications',
+            modelName: 'AllPublications',
             timestamps: false
         }
     }
@@ -19,18 +19,8 @@ const AllPublicationsSchema = {
       primaryKey: true,
       autoIncrement: true,
     },
-    id_publicate: {
-      type: DataTypes.INTEGER,
-    },
-    id_postcreate: {
-      type: DataTypes.INTEGER,
-    }
   };
 
-// Project.hasMany(Task, {
-//   foreinkey: "projectId",
-//   sourceKey: "id",
-// });
-// Task.belongsTo(Project, { foreinkey: "projectId", targetId: "id" });
+
 
 module.exports = { AllPublications, AllPublicationsSchema };

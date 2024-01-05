@@ -1,9 +1,8 @@
-const PublicationsService = require('../services/Publications.service');
+const PublicationsService = require('../services/publications.service');
 const service = new PublicationsService();
 
 const create = async ( req, res ) => {
     try { 
-        await sequelize.sync({ alter : true})
         const response = await service.create(req.body);
         res.json({ success: true, data: response});
     } catch (error) {

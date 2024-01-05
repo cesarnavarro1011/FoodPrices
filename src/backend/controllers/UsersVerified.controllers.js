@@ -1,9 +1,8 @@
-const UsersVerifiedService = require('../services/UsersVerified.service');
+const UsersVerifiedService = require('../services/usersVerified.service');
 const service = new UsersVerifiedService();
 
 const create = async ( req, res ) => {
     try { 
-        await sequelize.sync({ alter : true})
         const response = await service.create(req.body);
         res.json({ success: true, data: response});
     } catch (error) {

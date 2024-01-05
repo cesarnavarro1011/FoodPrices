@@ -1,10 +1,9 @@
 const sequelize = require('../libs/sequelize');
-const AllPublicationsService = require('../services/AllPublications.service');
+const AllPublicationsService = require('../services/allPublications.service');
 const service = new AllPublicationsService();
 
 const create = async ( req, res ) => {
     try { 
-        await sequelize.sync({ alter : true})
         const response = await service.create(req.body);
         res.json({ success: true, data: response});
     } catch (error) {

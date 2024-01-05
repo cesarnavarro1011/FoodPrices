@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router(); 
-const Publications = require('../controllers/Publications.controllers');
+const publicationsController = require('../controllers/publications.controllers');
 
 router
-    .get('/', Publications.get )
-    .get('/:id', Publications.getById )
-    .post('/', Publications.create )
-    .put('/:id', Publications.update )
-    .delete('/:id', Publications._delete );
+    .get('/', publicationsController.get )
+    .get('/:id', publicationsController.getById )
+    .post('/', publicationsController.create )
+    .put('/:id', publicationsController.update )
+    .delete('/:id', publicationsController._delete );
 
 module.exports = router;

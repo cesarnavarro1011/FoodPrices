@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router(); 
-const PostCreate = require('../controllers/PostCreate.controllers');
+const postCreateController = require('../controllers/postCreate.controllers');
 
 router
-    .get('/', PostCreate.get )
-    .get('/:id', PostCreate.getById )
-    .post('/', PostCreate.create )
-    .put('/:id', PostCreate.update )
-    .delete('/:id', PostCreate._delete );
+    .get('/', postCreateController.get )
+    .get('/:id', postCreateController.getById )
+    .post('/', postCreateController.create )
+    .put('/:id', postCreateController.update )
+    .delete('/:id', postCreateController._delete );
 
 module.exports = router;

@@ -7,7 +7,7 @@ class UsersVerified extends Model {
         return {
             sequelize,
             tableName: PERSON_TABLE,
-            modelName: 'users-verified',
+            modelName: 'UsersVerified',
             timestamps: false
         }
     }
@@ -21,12 +21,4 @@ const UsersVerifiedSchema = {
     }
   }
 
-  
-  
-  // UsersVerified.hasMany(Users, {
-    //   foreinkey: "projectId",
-    //   sourceKey: "id",
-    // });
-    // Task.belongsTo(Project, { foreinkey: "projectId", targetId: "id" });
-    
     module.exports = { UsersVerified, UsersVerifiedSchema };

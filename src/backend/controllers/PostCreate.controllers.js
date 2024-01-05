@@ -1,9 +1,8 @@
-const PostCreateService = require('../services/PostCreate.service');
+const PostCreateService = require('../services/postCreate.service');
 const service = new PostCreateService();
 
 const create = async ( req, res ) => {
     try { 
-        await sequelize.sync({ alter : true})
         const response = await service.create(req.body);
         res.json({ success: true, data: response});
     } catch (error) {

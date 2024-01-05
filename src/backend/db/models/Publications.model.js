@@ -1,4 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const { CommentsUsers } = require('./commentsUsers.model');
+const { AllPublications } = require('./allPublications.model');
 
 const PERSON_TABLE = 'publications';
 
@@ -43,8 +45,12 @@ const PublicationsSchema = {
     },
 };
 
-// Project.hasMany(Task, {
-//   foreinkey: "projectId",
+// Publications.hasMany(CommentsUsers, {
+//   foreinkey: "fk_publications",
+//   sourceKey: "id",
+// });
+// Publications.hasOne(AllPublications, {
+//   foreinkey: "fk_publications",
 //   sourceKey: "id",
 // });
 // Task.belongsTo(Project, { foreinkey: "projectId", targetId: "id" });
