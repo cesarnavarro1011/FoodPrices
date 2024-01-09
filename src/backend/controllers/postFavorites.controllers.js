@@ -1,5 +1,5 @@
-const PostCreateService = require('../services/postCreate.service');
-const service = new PostCreateService();
+const postFavoritesService = require('../services/publications.service');
+const service = new postFavoritesService();
 
 const create = async ( req, res ) => {
     try { 

@@ -1,21 +1,21 @@
 const { models } = require('../libs/sequelize');
 
-class AllPublicationsService { 
+class UsersVerifiedService { 
   
     constructor() {}
 
     async find() {
-      const res = await models.AllPublications.findAll();
+      const res = await models.AccountsVerified.findAll();
       return res;
     }
 
     async findOne(id) {
-      const res = await models.AllPublications.findByPk(id);
+      const res = await models.AccountsVerified.findByPk(id);
       return res;
     }
 
     async create(data) {
-      const res = await models.AllPublications.create(data);
+      const res = await models.AccountsVerified.create(data);
       return res;
     }
 
@@ -30,7 +30,6 @@ class AllPublicationsService {
       await model.destroy();
       return { deleted: true };
     }
-  
   }
   
-  module.exports = AllPublicationsService;
+  module.exports = UsersVerifiedService;

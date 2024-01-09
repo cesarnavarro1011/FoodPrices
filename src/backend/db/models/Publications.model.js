@@ -1,6 +1,5 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const { CommentsUsers } = require('./commentsUsers.model');
-const { AllPublications } = require('./allPublications.model');
 
 const PERSON_TABLE = 'publications';
 
@@ -19,10 +18,16 @@ const PublicationsSchema = {
 
     id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      unique: 'compositeIndex' 
     },
-    imageurl: {
+    fk_usersVerified: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    imageUrl: {
       type: DataTypes.STRING,
     },
     categories: {
@@ -40,8 +45,14 @@ const PublicationsSchema = {
     prices: {
       type: DataTypes.INTEGER,
     },
-    id_comments: {
-      type: DataTypes.STRING,
+    fk_creator: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+
+    },
+    fk_commentsUsers: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
 };
 

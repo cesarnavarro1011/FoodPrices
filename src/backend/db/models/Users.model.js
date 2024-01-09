@@ -1,7 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const { CommentsUsers } = require('./commentsUsers.model');
-const { PostCreate } = require('./postCreate.model');
-const { UsersVerified } = require('./usersVerified.model');
+const { AccountsVerified } = require('./accountsVerified.model');
 
 const PERSON_TABLE = 'users';
 
@@ -18,10 +17,11 @@ class Users extends Model {
 
 const UsersSchema = {
     id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      unique: 'compositeIndex' 
     },
     img_perfil: {
       type: DataTypes.STRING,
@@ -45,14 +45,22 @@ const UsersSchema = {
       type: DataTypes.DATE,
     },
     phone: {
-      type: DataTypes.REAL(11, 12),
+      type: DataTypes.REAL(),
+    },
+    userVerified: {
+      type: DataTypes.BOOLEAN,
+    },
+    fk_post_favorites: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   };
 
-// Users.hasOne(UsersVerified, {
-//   foreinkey: "fk_users",
+// Users.hasOne(AccountsVerified, {
+//   foreinkey: "fk_user",
 //   sourceKey: "id",
 // });
+
 
 // Users.UsersVerified = Users.hasOne(UsersVerified);
 

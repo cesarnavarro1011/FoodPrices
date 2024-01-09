@@ -5,17 +5,17 @@ class PostCreateService {
     constructor() {}
 
     async find() {
-      const res = await models.PostCreate.findAll();
+      const res = await models.PostFavorites.findAll();
       return res;
     }
 
     async findOne(id) {
-      const res = await models.PostCreate.findByPk(id);
+      const res = await models.PostFavorites.findByPk(id);
       return res;
     }
 
     async create(data) {
-      const res = await models.PostCreate.create(data);
+      const res = await models.PostFavorites.create(data);
       return res;
     }
 

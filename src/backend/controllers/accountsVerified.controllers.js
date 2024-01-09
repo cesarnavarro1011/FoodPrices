@@ -1,6 +1,5 @@
-const sequelize = require('../libs/sequelize');
-const AllPublicationsService = require('../services/allPublications.service');
-const service = new AllPublicationsService();
+const AccountsVerifiedService = require('../services/accountsVerified.service');
+const service = new AccountsVerifiedService();
 
 const create = async ( req, res ) => {
     try { 

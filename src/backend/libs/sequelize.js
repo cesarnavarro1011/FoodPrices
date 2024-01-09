@@ -1,5 +1,4 @@
 const { Sequelize } = require('sequelize');
-
 const  { config } = require('../config/config');
 const setupModels = require('./../db/models');
   
@@ -13,7 +12,9 @@ const sequelize = new Sequelize(
     }
   );    
 
-sequelize.sync({ alter: true });
+
+// sequelize.sync({ alter: true });
+sequelize.sync();
 setupModels(sequelize);
 
 module.exports = sequelize;

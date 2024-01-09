@@ -1,18 +1,19 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const PERSON_TABLE = 'comments_users';
+const PERSON_TABLE = 'post_favorites';
 
-class CommentsUsers extends Model {
+class PostFavorites extends Model {
     static config(sequelize) {
         return {
             sequelize,
             tableName: PERSON_TABLE,
-            modelName: 'CommentsUsers',
+            modelName: 'PostFavorites',
             timestamps: false
         }
     }
 } 
-const CommentsUsersSchema = {
+
+const PostFavoritesSchema = {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -24,17 +25,13 @@ const CommentsUsersSchema = {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    user_comment: {
-      type: DataTypes.STRING,
+    fk_allPublications: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
-    ratings: {
-      type: DataTypes.STRING,
-    },
-  };
+    myFavorites: {
+      type: DataTypes.BOOLEAN,
+    }
+  }
 
-// CommentsUsers.hasMany(Publications, {
-//   foreinkey: "id_comments",
-//   sourceKey: "id",
-// });
-
-module.exports = { CommentsUsers, CommentsUsersSchema };
+module.exports = { PostFavorites, PostFavoritesSchema };
