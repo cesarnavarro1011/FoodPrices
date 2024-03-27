@@ -9,16 +9,16 @@ export function useFetch() {
   const [alert, setAlert] = useState();
 
   const url = 'https://www.jsondataai.com/api/1FS2GKN';
-  // const options = {
-  //   'mode': 'no-cors',
-  // };
+  const options = {
+    'mode': 'no-cors',
+  };
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // const response = await fetch(`${url}?query=${query}&client_id=${acessKey}`);
-        const response = await fetch(url);
+        const response = await fetch(url,options);
         if (!response.ok) {
           setAlert('error');
         } else {
