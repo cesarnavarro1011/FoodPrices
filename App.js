@@ -12,10 +12,12 @@ import { NativeBaseProvider } from "native-base";
 import Maps from "./src/view/maps";
 import Setting from "./src/view/setting";
 import CardDetails from "./src/view/cardDetails";
+import ProfileSettings from "./src/view/profileSettings";
 
 const  headerShown = () => ({
-  headerShown: false
+  headerShown: false,
 })
+
 
 const StackHome = createNativeStackNavigator();
 function MyStack() {
@@ -29,6 +31,11 @@ function MyStack() {
       <StackHome.Screen 
         name="CardDetails" 
         component={CardDetails}  
+        options={headerShown}
+      />
+      <StackHome.Screen 
+        name="ProfileSettings" 
+        component={ProfileSettings}  
         options={headerShown}
       />
     </StackHome.Navigator>
@@ -105,6 +112,8 @@ export default function App() {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -113,3 +122,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+

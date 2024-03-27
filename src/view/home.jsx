@@ -1,11 +1,17 @@
 import { Box, Center, Container, HStack, Heading, ScrollView, Stack, VStack } from 'native-base';
-import React from 'react'
-import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import Card from '../components/card';
+import { useFetch } from '../useFetch';
+import { Loading } from '../components/loading';
+import AlertDown from '../components/alertDown';
 
 
 export default function Home({ navigation }) {
-  const cards = [1,2,4,5,6,7,8,9,10,11,12,13,14];
+
+  const {data, loading, alert}  =  useFetch();
+  const db = Object.values(data)[3];
+  console.log(data);
+
   return (
     <SafeAreaView>
       <VStack space={2} justifyContent="center">
@@ -36,33 +42,57 @@ export default function Home({ navigation }) {
           >This is the Center</Center>
         </HStack>
       </VStack>
-      <ScrollView pt={1} mb={110} >
-        <Stack height="auto" overflow="hidden" flexWrap="wrap" flexDirection="row" >{
-          cards.map((cardCount) => (
-            <Card 
-              key = {cardCount}
-              onPress={() => {
-                navigation.navigate('CardDetails')
-              }}  
-            />
-          ))}
-          </Stack>
-      </ScrollView>
+        {/* <ScrollView pt={1} mb={110}> */}
+          <Stack height="auto" overflow="hidden">
+          {loading 
+            ? (<Loading/>) 
+            : (
+              <View flexDirection="row" flexWrap="wrap">
+                {db ? (
+                  <FlatList
+                      data={db}
+                      renderItem={<Card
+                          key={db.id}
+                          photo={db.photo}
+                          title={db.name}
+                          description={db.description}
+                          price={db.price}
+                          onPress={() => {
+                            navigation.navigate('CardDetails')
+                          }}  
+                        />}
+                      keyExtractor={item => item.id}
+                    />
+                ) : ( 
+                  <AlertDown alert={alert}/>
+                )}
+              </View>
+        )}</Stack>  
+        {/* </ScrollView> */}
     </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'blue',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+                  // db.map((data) => (
+                  //   <Card
+                  //     key={db.id}
+                  //     photo={db.photo}
+                  //     title={db.name}
+                  //     description={db.description}
+                  //     price={db.price}
+                  //     onPress={() => {
+                  //       navigation.navigate('CardDetails')
+                  //     }}  
+                  //   />)) 
+
+                    //   <FlatList
+                    //   data={db}
+                    //   renderItem={<Card 
+                    //       onPress={() => {
+                    //         navigation.navigate('CardDetails')
+                    //       }}  
+                    //     />}
+                    //   keyExtractor={item => item.id}
+                    //   extraData={selectedId}
+                    // />
+  

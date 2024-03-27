@@ -2,13 +2,15 @@ import { Badge, Box, Center, Container, Divider, HStack, Heading, Image, ScrollV
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Rating, AirbnbRating } from 'react-native-ratings';
-import UserComents from '../components/userComents';
+import UserComents from '../components/userComents.card';
 import Ratings from '../components/ratings';
+import CardUserVerified from '../components/cardUserVerified';
 
 // const WATER_IMAGE = require('./water.png')
 
-export default function CardDetails({ nagivation }) {
+export default function CardDetails({ navigation }) {
   const usercoments = [1,2,3,4,5];
+  const account = [1];
   return (
     <SafeAreaView>
     <ScrollView>
@@ -24,8 +26,8 @@ export default function CardDetails({ nagivation }) {
               <Badge colorScheme="info" alignSelf="left" variant="outline"  my={2}>
                 Food
               </Badge>
-              <Text fontSize={16} w="100%">
-                agjajgasjgagjaghññhafhasjfkgañgsjkdgñdñzsdsdgñdgdsñzgd 
+              <Text fontSize={14} w="100%">
+                Una comida tipica de la costa que lleva: arroz de coco, con pescado y patacones
               </Text>
               <HStack>
                 <Box display="flex" flexDirection="row" mt={2} justifyContent="center" alignItems="center">
@@ -36,17 +38,24 @@ export default function CardDetails({ nagivation }) {
                   </Badge>
                 </Box>
               </HStack>
-            <Text w="100%" h="auto" fontSize={19} py={2} pl={1} >Puntuación:</Text>
-              <Ratings size={24} b={7}/>
-            <Divider my="1" bg="emerald.500"/>
-            <View mt={8} w="100%" h="auto">
-              <Heading fontSize={22} fontWeight="bold" >Comments:</Heading>{
-                usercoments.map((user) =>(
-                  <UserComents 
-                    key = {user}
-                  />
-                ))
-            }</View>
+                <Box>{
+                  account.map((a) => (
+                    <CardUserVerified
+                      key={a}
+                      onPress={() => { navigation.navigate('ProfileSettings')}}
+                />))
+                }</Box>
+              <Divider mb={4} bg="emerald.500"/>
+              <Text w="100%" h="auto" fontWeight="500" fontSize={19} py={1} pl={1}>Calificación:</Text>
+                <Ratings size={24} b={7}/>
+              <View mt={5} w="100%" h="auto">
+                <Heading fontSize={22} fontWeight="bold" >Comments:</Heading>{
+                  usercoments.map((user) =>(
+                    <UserComents 
+                      key = {user}
+                    />
+                  ))
+              }</View>
           </Box>
         </View>
       </Stack>
