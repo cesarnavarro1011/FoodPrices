@@ -8,17 +8,17 @@ export function useFetch() {
   const [loading, setLoading] = useState(true);
   const [alert, setAlert] = useState();
 
-  const url = 'https://www.jsondataai.com/api/1FS2GKN';
-  const options = {
+  const url = 'https://proxyfood-production.up.railway.app/api/v8/foodPrices';
+  /*const options = {
     'mode': 'no-cors',
-  };
+  };*/
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // const response = await fetch(`${url}?query=${query}&client_id=${acessKey}`);
-        const response = await fetch(url,options);
+        const response = await fetch(url);
         if (!response.ok) {
           setAlert('error');
         } else {
