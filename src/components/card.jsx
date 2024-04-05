@@ -3,7 +3,7 @@ import { StyleSheet, Touchable, View } from "react-native";
 import Ratings from "./ratings";
 
 export default function Card(props) {
-  const { onPress, photo, title, description, price } = props 
+  const { onPress, ratings , photo, title, description, price } = props 
   
   return (
     <Pressable  onPress = { onPress }>
@@ -29,33 +29,33 @@ export default function Card(props) {
       fontWeight: "700",
       fontSize: "xs"
     }} position="absolute" bottom="0" px="3" py="1.5">
-        PHOTOS
+        {ratings}
       </Center>
     </Box>
     <Stack p="3" space={1}>
       <Stack space={2}>
         <Heading size="sm" ml="-1">
-          The Garden City
+          {title}
         </Heading>
         <Text fontSize="xs" _light={{
         color: "violet.500"
       }} _dark={{
         color: "violet.400"
       }} fontWeight="500" ml="-0.5" mt="-1">
-          Comida tipica de la costa
+          {description}
         </Text>
       </Stack>
-      {/* <Ratings 
+      <Ratings 
         isDisable = "flase"
         size={15} 
-        b={6} 
+        b={6}  
         ml={-1} 
         mt={0}
-      /> */}
+      />
       <HStack alignItems="center" space={4} justifyContent="space-between">
         <Badge variant="solid" bg="emerald.500" alignSelf="left" w={65} h={8} my={0} 
           _text={{ fontSize: 11, fontWeight: "bold" }}>
-          19.000
+          {price}
         </Badge>
         <HStack alignItems="center" space={4} justifyContent="space-between">
           <Text color="coolGray.600" fontSize="xs" _dark={{

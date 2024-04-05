@@ -8,7 +8,8 @@ import CardUserVerified from '../components/cardUserVerified';
 
 // const WATER_IMAGE = require('./water.png')
 
-export default function CardDetails({ navigation }) {
+export default function CardDetails({ route, navigation }) {
+  const { data } = route.params;
   const usercoments = [1,2,3,4,5];
   const account = [1];
   return (
@@ -22,12 +23,12 @@ export default function CardDetails({ navigation }) {
         </Center>
         <View h="auto" p={2} overflow="hidden">
           <Box pl={1}>
-            <Heading w="100%" fontSize={29}>Title</Heading>
+            <Heading w="100%" fontSize={29}>{data.name}</Heading>
               <Badge colorScheme="info" alignSelf="left" variant="outline"  my={2}>
                 Food
               </Badge>
               <Text fontSize={14} w="100%">
-                Una comida tipica de la costa que lleva: arroz de coco, con pescado y patacones
+                {data.description}
               </Text>
               <HStack>
                 <Box display="flex" flexDirection="row" mt={2} justifyContent="center" alignItems="center">

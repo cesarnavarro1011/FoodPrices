@@ -9,7 +9,6 @@ import AlertDown from '../components/alertDown';
 export default function Home({ navigation }) {
 
   const {data, loading, alert}  =  useFetch();
-  const db = Object.values(data)[3];
   console.log(data);
 
   return (
@@ -42,57 +41,34 @@ export default function Home({ navigation }) {
           >This is the Center</Center>
         </HStack>
       </VStack>
-        {/* <ScrollView pt={1} mb={110}> */}
+         <ScrollView pt={1} mb={110}> 
           <Stack height="auto" overflow="hidden">
           {loading 
             ? (<Loading/>) 
             : (
               <View flexDirection="row" flexWrap="wrap">
-                {db ? (
-                  <FlatList
-                      data={db}
-                      renderItem={<Card
-                          key={db.id}
-                          photo={db.photo}
-                          title={db.name}
-                          description={db.description}
-                          price={db.price}
-                          onPress={() => {
-                            navigation.navigate('CardDetails')
-                          }}  
-                        />}
-                      keyExtractor={item => item.id}
-                    />
+                {data ? (
+                  data.map((data) => (
+                    <Card
+                      key={data.id}
+                      photo={data.photo}
+                      ratings={data.rating}
+                      title={data.name}
+                      description={data.description}
+                      price={data.price}
+                      onPress={() => {
+                        navigation.navigate('CardDetails',{
+                          data
+                        })
+                      }}  
+                    />)) 
                 ) : ( 
                   <AlertDown alert={alert}/>
                 )}
               </View>
         )}</Stack>  
-        {/* </ScrollView> */}
+         </ScrollView>
     </SafeAreaView>
   )
 }
 
-                  // db.map((data) => (
-                  //   <Card
-                  //     key={db.id}
-                  //     photo={db.photo}
-                  //     title={db.name}
-                  //     description={db.description}
-                  //     price={db.price}
-                  //     onPress={() => {
-                  //       navigation.navigate('CardDetails')
-                  //     }}  
-                  //   />)) 
-
-                    //   <FlatList
-                    //   data={db}
-                    //   renderItem={<Card 
-                    //       onPress={() => {
-                    //         navigation.navigate('CardDetails')
-                    //       }}  
-                    //     />}
-                    //   keyExtractor={item => item.id}
-                    //   extraData={selectedId}
-                    // />
-  
